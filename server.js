@@ -14,9 +14,11 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   
-  // Cache control for assets
+  // Cache control for assets - DISABLED FOR DEBUGGING
   if (req.url.match(/\.(jpg|jpeg|png|gif|fset|fset3|iset|glb|gltf)$/)) {
-    res.setHeader('Cache-Control', 'public, max-age=31536000');
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
   }
   
   next();
